@@ -17,7 +17,7 @@ public class SmartphoneListTest01 {
         // smartphones.clear(); // Limpa o array sem perder a variável de referência
 
         for (Smartphone smartphone : smartphones){
-            System.out.println(smartphone);
+            System.out.println(smartphone); //Imprime cada item da lista
         }
 
         Smartphone s4 = new Smartphone("22222333","Pixel"); // Tentando inserir um objeto 'já existente'
