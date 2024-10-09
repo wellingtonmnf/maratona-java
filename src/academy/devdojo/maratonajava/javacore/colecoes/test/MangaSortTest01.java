@@ -11,7 +11,13 @@ class MangaByIdComparator implements Comparator<Manga>{
 
     @Override
     public int compare(Manga manga1, Manga manga2) {
-        return manga1.getId().compareTo(manga2.getId());
+        return manga1.getId().compareTo(manga2.getId()); // Metodo 'compareTo()' de Long
+        /*
+        Neste exemplo, o metodo compareTo() utilizado não é o da classe Manga,
+        mas sim o da Wrapper Class Long, pois manga1.getId() retorna um Long,
+        que por sua vez possui o metodo compareTo() já implementado internamente
+        para fazer o ordenamento de acordo com o solicitado em Comparator.
+        */
     }
 }
 
@@ -36,7 +42,8 @@ public class MangaSortTest01 {
             System.out.println(manga);
         }
 
-        Collections.sort(mangas, new MangaByIdComparator());
+//        Collections.sort(mangas, new MangaByIdComparator());
+        mangas.sort(new MangaByIdComparator());
         System.out.println("------------");
 
         for (Manga manga : mangas) {
