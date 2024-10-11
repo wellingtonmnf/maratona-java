@@ -21,9 +21,18 @@ class MangaByIdComparator implements Comparator<Manga>{
     }
 }
 
+class MangaByPrecoComparator implements Comparator<Manga>{
+
+    @Override
+    public int compare(Manga manga1, Manga manga2) {
+        return Double.compare(manga1.getPreco(), manga2.getPreco());
+    }
+}
+
 public class MangaSortTest01 {
     public static void main(String[] args) {
 
+        System.out.println("--------------------------------------------------------");
         List<Manga> mangas = new ArrayList<>(6);
         mangas.add(new Manga(5L,"Helsing Ultimate",19.9));
         mangas.add(new Manga(1L,"Berserk",9.5));
@@ -31,20 +40,30 @@ public class MangaSortTest01 {
         mangas.add(new Manga(3L,"Attack on Titan",11.2));
         mangas.add(new Manga(2L,"Dragon Ball Z",2.99));
 
+        System.out.println("Lista por ordem de inserção no ArrayList (original)");
         for (Manga manga : mangas) {
             System.out.println(manga);
         }
 
-        Collections.sort(mangas);
-        System.out.println("------------");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Lista por ordem alfabética (padrão estabelecido)");
+        Collections.sort(mangas); // Ordenação 'padrão' definida no compareTo()  da classe Manga
 
         for (Manga manga : mangas) {
             System.out.println(manga);
         }
 
-//        Collections.sort(mangas, new MangaByIdComparator());
-        mangas.sort(new MangaByIdComparator());
-        System.out.println("------------");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Lista por ordem de ID (comparador 01)");
+        Collections.sort(mangas, new MangaByIdComparator()); // Ordenação pelo Comparator chamada pela classe 'Collections'
+
+        for (Manga manga : mangas) {
+            System.out.println(manga);
+        }
+
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Lista por ordem de preço (comparador 02)");
+        mangas.sort(new MangaByPrecoComparator()); // Ordenação pelo Comparator chamada pela lista 'mangas'
 
         for (Manga manga : mangas) {
             System.out.println(manga);
