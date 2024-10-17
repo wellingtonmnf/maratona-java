@@ -39,11 +39,11 @@ public class NavigableMapTest01 {
         // floor imediatamente <= que o item comparado
         // higher imediatamente > que o item comparado
         // ceiling imediatamente >= que o item comparado
-        System.out.println(map.headMap("C"));
+        System.out.println(map.headMap("C")); // Está linkado com o map, assim como o método asList()
         System.out.println(map.headMap("C", true)); // Inclusivo com o valor
         System.out.println(map.tailMap("C"));
         System.out.println(map.tailMap("C", false)); // Exclusivo com o valor
-        System.out.println(map.subMap("B", "D"));
+        System.out.println(map.subMap("B", "D")); // Está linkado com o map, assim como o método asList()
         System.out.println(map.subMap("B", true, "D", true)); // Inclusivo com os valores
 
         System.out.println("---------------------");

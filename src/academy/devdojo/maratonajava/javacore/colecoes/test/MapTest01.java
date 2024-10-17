@@ -13,6 +13,7 @@ public class MapTest01 {
         map.put("teklado","teclado");
         map.put("mouze","mouse");
         map.put("vc","você");
+        map.putIfAbsent("vc","você2");
         map.put("vc2","você");
         System.out.println(map);
         System.out.println("-------------");
