@@ -16,17 +16,17 @@ public class ClasseGenericaTest03 {
         RentalService<Carro> rentalServiceCarro = new RentalService<>(carrosDisponiveis);
         RentalService<Barco> rentalServiceBarco = new RentalService<>(barcosDisponiveis);
 
-        Carro carro = rentalServiceCarro.buscarCarroDisponivel();
+        Carro carro = rentalServiceCarro.buscarVeiculoDisponivel();
         System.out.println("----------------------------");
         System.out.println("Usando o carro por um mês...");
         System.out.println("----------------------------");
-        rentalServiceCarro.retornarCarroAlugado(carro);
+        rentalServiceCarro.retornarVeiculoAlugado(carro);
         System.out.println("----------------------------");
-        Barco barco = rentalServiceBarco.buscarCarroDisponivel();
+        Barco barco = rentalServiceBarco.buscarVeiculoDisponivel();
         System.out.println("----------------------------");
         System.out.println("Usando o barco por um mês...");
         System.out.println("----------------------------");
-        rentalServiceBarco.retornarCarroAlugado(barco);
+        rentalServiceBarco.retornarVeiculoAlugado(barco);
 
     }
 }

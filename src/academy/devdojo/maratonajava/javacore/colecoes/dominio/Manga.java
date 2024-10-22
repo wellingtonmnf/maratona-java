@@ -98,12 +98,12 @@ public class Manga implements Comparable<Manga> {
         // O ideal é delegar a responsabilidade para as classes do Java
         // para evitar implementar código de forma desnecessária
 
-        //return = this.nome.compareTo(outroManga.getNome()); //Comparação por nome
+        //return this.nome.compareTo(outroManga.getNome()); //Comparação por nome
         //return Double.valueOf(preco).compareTo(outroManga.getPreco()); //Comparação por preço
         //return Double.compare(preco, outroManga.getPreco()); //Comparação por preço
 
 
-        /* Essa implementaçaõ permite validar de maneira consistente com a
+        /* Essa implementação permite validar de maneira consistente com a
          * implementação definida no metodo 'equals()'
          * Isso permite consistência na checagem de elementos em diferentes situações
          * como no uso de coleções que utilizam 'equals()' (ArrayList, HashSet) e as

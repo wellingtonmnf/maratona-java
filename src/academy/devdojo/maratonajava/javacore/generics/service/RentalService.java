@@ -9,7 +9,7 @@ public class RentalService<T> {
         this.veiculosDisponiveis = veiculosDisponiveis;
     }
 
-    public T buscarCarroDisponivel() {
+    public T buscarVeiculoDisponivel() {
         System.out.println("Buscando veículo dispónível...");
         T veiculo = veiculosDisponiveis.remove(0);
         System.out.println("Alugando veículo: " + veiculo);
@@ -18,7 +18,7 @@ public class RentalService<T> {
         return veiculo;
     }
 
-    public void retornarCarroAlugado(T veiculo) {
+    public void retornarVeiculoAlugado(T veiculo) {
         System.out.println("Devolvendo veículo: " + veiculo);
         veiculosDisponiveis.add(veiculo);
         System.out.println("Veículos disponíveis para alugar:");
