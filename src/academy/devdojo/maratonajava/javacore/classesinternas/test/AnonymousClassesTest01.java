@@ -13,7 +13,9 @@ public class AnonymousClassesTest01 {
             @Override
             public void locomover() {
                 System.out.println("Animal se mexendo");
-                pular(); // Acesso apenas internamente
+                // É possível acessar esse método apenas internamente
+                // pois a variável tem acesso apenas ao método 'locomover()'
+                pular();
             }
 
             public void pular() {

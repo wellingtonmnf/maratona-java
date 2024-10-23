@@ -7,12 +7,7 @@ public class OuterClassesTest02 {
     void print(final String param) {
 
         String lastName = "Izuku"; // Variável local efetivamente final
-//        lastName = "Uzumaki"; // A variável precisa ser final ou efetivamente final
-
-        /* Alerações em variáveis globais se refletem no escopo externo
-         * mesmo após o método ser encerrado
-         */
-        name = "Naruto";
+//        lastName = "Uzumaki"; // Não é possível fazer alterações. A variável precisa ser final ou efetivamente final
 
         class LocalClass {
             public void printLocal() {
@@ -31,7 +26,5 @@ public class OuterClassesTest02 {
 
         OuterClassesTest02 outer = new OuterClassesTest02();
         outer.print("Olá!");
-        System.out.println("---------");
-        System.out.println(outer.name);
     }
 }

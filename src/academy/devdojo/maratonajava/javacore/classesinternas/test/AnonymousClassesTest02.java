@@ -18,7 +18,7 @@ class BarcoNameComparator implements Comparator<Barco>{
 public class AnonymousClassesTest02 {
     public static void main(String[] args) {
 
-        List<Barco> barcoList = new ArrayList<>(List.of(new Barco("Lancha"), new Barco("Canoa")));
+        List<Barco> barcoList = new ArrayList<>(List.of(new Barco("Lancha"), new Barco("Canoa"))); // Lista mutável
         // Implementação de um Comparator direto numa Classe Anônima
         barcoList.sort(new Comparator<Barco>() {
             @Override
@@ -33,5 +33,6 @@ public class AnonymousClassesTest02 {
         barcoList.sort((o1, o2) -> o1.getNome().compareTo(o2.getNome()));
 
         System.out.println(barcoList);
+
     }
 }

@@ -7,7 +7,8 @@ public class OuterClassesTest01 {
     class Inner {
         public void printOuterClassAtribbute() {
             System.out.println(name);
-            // O 'this' sempre faz referência a classe interna
+            // O 'this' sempre faz referência ao contexto inserido
+            // neste caso, a classe interna
             System.out.println(this);
             // É necessário chamar o 'this' dessa forma para a classe externa
             System.out.println(OuterClassesTest01.this);
