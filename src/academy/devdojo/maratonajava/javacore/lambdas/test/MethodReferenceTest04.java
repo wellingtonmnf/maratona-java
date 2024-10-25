@@ -1,0 +1,50 @@
+package academy.devdojo.maratonajava.javacore.lambdas.test;
+
+import academy.devdojo.maratonajava.javacore.lambdas.dominio.Anime;
+import academy.devdojo.maratonajava.javacore.lambdas.service.AnimeComparators;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+
+public class MethodReferenceTest04 {
+    public static void main(String[] args) {
+
+        List<Anime> animeList = new ArrayList<>(List.of(new Anime("Berserk", 43), new Anime("One Piece", 1000), new Anime("Naruto", 720)));
+        // Referência a um construtor:
+
+        // Sintaxe com lambdas usando new() e Supplier
+        Supplier<AnimeComparators> animeComparators = () -> new AnimeComparators();
+        // Sintaxe com method reference
+        Supplier<AnimeComparators> animeComparatorsSupplier = AnimeComparators::new;
+
+        // Criando um objeto com get() do Supplier e referenciando o método comparador
+        animeList.sort(animeComparatorsSupplier.get()::compareByEpisodesNonStatic);
+
+        // Não consegui criar chamando o método, pois o mesmo pede argumentos
+        // que no Method Reference tornan-se desnecessários, pois o mesmo
+        // consegue iterar sobre a lista da outra forma
+//        animeList.sort(animeComparators.get().compareByEpisodesNonStatic());
+
+        System.out.println(animeList);
+
+        // Quando um objeto recebe parâmetros no construtor, não é possível criá-lo
+        // diretamente com o Supplier
+
+        // Criando uma BiFunction que recebe 2 argumentos e retorna um
+        // para poder criar um objeto Anime, que recebe parâmetros no construtor
+        BiFunction<String, Integer, Anime> animeBiFunction = (title, episodes) -> new Anime(title, episodes);
+        BiFunction<String, Integer, Anime> animeBiFunctionCreator = Anime::new; // Aqui é possível usar Method Reference
+
+        //Criando novos objetos do tipo Anime através do método apply()
+        Anime anime = animeBiFunctionCreator.apply("Super Campeões", 36);
+        Anime anime1 = animeBiFunction.apply("Saint Seyia", 144);
+
+        animeList.add(anime);
+        animeList.add(anime1);
+        // Criando um objeto com get() do Supplier e referenciando o método comparador
+        animeList.sort(animeComparatorsSupplier.get()::compareByEpisodesNonStatic);
+        System.out.println(animeList);
+    }
+}

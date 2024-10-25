@@ -14,7 +14,8 @@ public class LambdaTest02 {
         System.out.println(stringsUpperCase);
 
     }
-
+    // A interface Function recebe um tipo, processa o parâmetro
+    // e retorna um tipo
     private static <T,R> List<R> map(List<T> list, Function<T,R> function){
 
         List<R> result = new ArrayList<>();
@@ -23,7 +24,6 @@ public class LambdaTest02 {
             R r = function.apply(e);
             result.add(r);
         }
-
         return result;
     }
 }
