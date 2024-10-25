@@ -19,6 +19,14 @@ public class MethodReferenceTest04 {
         // Sintaxe com method reference
         Supplier<AnimeComparators> animeComparatorsSupplier = AnimeComparators::new;
 
+        /* O Java consegue inferir o tipo da lambda observando o contexto em que ela é usada.
+         * Neste caso, o Collections.sort() espera um Comparator<Anime>.
+         * O Comparator é uma interface funcional, ou seja, possui apenas um método abstrato (compare()).
+         * A lambda que você criou implementa esse único método de forma implícita.
+         * O Java, ao encontrar uma lambda que se encaixa na assinatura de um método abstrato de uma interface funcional, realiza uma conversão implícita.
+         * Ou seja, a lambda é automaticamente "convertida" para um objeto que implementa a interface Comparator<Anime>.
+         */
+
         // Criando um objeto com get() do Supplier e referenciando o método comparador
         animeList.sort(animeComparatorsSupplier.get()::compareByEpisodesNonStatic);
 
@@ -34,15 +42,19 @@ public class MethodReferenceTest04 {
 
         // Criando uma BiFunction que recebe 2 argumentos e retorna um
         // para poder criar um objeto Anime, que recebe parâmetros no construtor
+
+        // Sintaxe com lambdas usando new() e BiFunction
         BiFunction<String, Integer, Anime> animeBiFunction = (title, episodes) -> new Anime(title, episodes);
-        BiFunction<String, Integer, Anime> animeBiFunctionCreator = Anime::new; // Aqui é possível usar Method Reference
+        // Sintaxe com method reference
+        BiFunction<String, Integer, Anime> animeBiFunctionCreator = Anime::new;
 
         //Criando novos objetos do tipo Anime através do método apply()
-        Anime anime = animeBiFunctionCreator.apply("Super Campeões", 36);
-        Anime anime1 = animeBiFunction.apply("Saint Seyia", 144);
+        Anime anime = animeBiFunction.apply("Super Campeões", 36);
+        Anime anime1 = animeBiFunctionCreator.apply("Saint Seyia", 144);
 
         animeList.add(anime);
         animeList.add(anime1);
+
         // Criando um objeto com get() do Supplier e referenciando o método comparador
         animeList.sort(animeComparatorsSupplier.get()::compareByEpisodesNonStatic);
         System.out.println(animeList);

@@ -22,8 +22,8 @@ public class MethodReferenceTest03 {
         Function<String, Integer> conversor = s -> Integer.parseInt(s);
         // Sintaxe com method reference
         Function<String, Integer> numStringToInteger = Integer::parseInt;
-
-        Integer num = numStringToInteger.apply("2258");
+        // Convertendo String para Integer através da chamada do método apply()
+        Integer num = numStringToInteger.apply("10");
         System.out.println(num);
 
         // Sintaxe com lambdas usando método contains() de List
@@ -33,7 +33,5 @@ public class MethodReferenceTest03 {
         // Sintaxe com method reference
         BiPredicate<List<String>, String> checkName = List::contains;
         System.out.println(checkName.test(list, "Rimuru"));
-
-
     }
 }

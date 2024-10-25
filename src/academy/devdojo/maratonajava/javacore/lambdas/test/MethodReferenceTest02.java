@@ -13,6 +13,14 @@ public class MethodReferenceTest02 {
         AnimeComparators animeComparators = new AnimeComparators();
         // Referência a método de instância de um objeto específico:
 
+        /* O Java consegue inferir o tipo da lambda observando o contexto em que ela é usada.
+         * Neste caso, o Collections.sort() espera um Comparator<Anime>.
+         * O Comparator é uma interface funcional, ou seja, possui apenas um método abstrato (compare()).
+         * A lambda que você criou implementa esse único método de forma implícita.
+         * O Java, ao encontrar uma lambda que se encaixa na assinatura de um método abstrato de uma interface funcional, realiza uma conversão implícita.
+         * Ou seja, a lambda é automaticamente "convertida" para um objeto que implementa a interface Comparator<Anime>.
+         */
+
         // Sintaxe com lambdas usando método comparador que NÃO implementa um Comparator
         animeList.sort((a1, a2) -> animeComparators.compareByEpisodesNonStatic(a1,a2));
         // Sintaxe com method reference usando list.sort()
